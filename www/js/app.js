@@ -69,3 +69,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
 });
+
+// Add the 'ionic.service.core' module to your main angular module:
+angular.module('test', ['ionic.service.core'])
+// Identify App
+.config(['$ionicAppProvider', function($ionicAppProvider) {
+  // Identify app
+  $ionicAppProvider.identify({
+    //I wouldn't normally put these identifiers on github,
+    //but, since this is a project app, I will leave them.
+    // The App ID for the server
+    app_id: 'c69901e8',
+    // The API key all services will use for this app
+    api_key: '15ae69dbdfd7e40e08c85f5b3398a8cdfeae2ec762c7920f'
+  });
+}])
