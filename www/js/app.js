@@ -51,17 +51,27 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/playlists",
       views: {
         'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/playlists.html"
+          //controller: 'PlaylistsCtrl'
         }
       }
     })
 
-  .state('app.profile', {
-    url: "/profile",
+  .state('app.createProfile', {
+    url: "/createProfile",
     views: {
       'menuContent': {
-        templateUrl: "templates/profile.html",
+        templateUrl: "templates/createProfile.html",
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
+
+  .state('app.editProfile', {
+    url: "/editProfile",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/editProfile.html",
         controller: 'ProfileCtrl'
       }
     }
