@@ -34,10 +34,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('app.location', {
-    url: "/location",
+    url: "/map",
     views: {
       'menuContent': {
-        templateUrl: "templates/location.html",
+        templateUrl: "templates/map.html",
         controller: "MapCtrl"
       }
     }
@@ -82,7 +82,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/map');
 });
 
 // Add the 'ionic.service.core' module to your main angular module:
