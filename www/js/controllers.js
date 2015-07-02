@@ -54,5 +54,14 @@ angular.module('starter.controllers', [])
 //   ];
 // })
 
-.controller('ProfileCtrl', function($scope, $stateParams) {
-});
+.controller('ProfileCtrl', ['User', '$scope', '$state', function (User, $scope, $state) {
+      $scope.user={};
+
+      $scope.create=function(){
+          console.log($scope.user);
+          User.create($scope.user)
+      };
+
+      //from parse https://www.parse.com/docs/js/guide#users-properties
+
+}]);
