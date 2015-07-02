@@ -37,7 +37,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: "/location",
     views: {
       'menuContent': {
-        templateUrl: "templates/location.html"
+        templateUrl: "templates/location.html",
+        controller: "MapCtrl"
       }
     }
   })
@@ -55,7 +56,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'menuContent': {
           templateUrl: "templates/playlists.html"
-          //controller: 'PlaylistsCtrl'
+          // controller: 'PlaylistsCtrl'
         }
       }
     })
