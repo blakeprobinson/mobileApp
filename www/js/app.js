@@ -43,11 +43,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('app.browse', {
-    url: "/browse",
+  .state('app.feed', {
+    url: "/feed",
     views: {
       'menuContent': {
-        templateUrl: "templates/browse.html"
+        templateUrl: "templates/feed.html",
+        controller: 'FeedCtrl'
       }
     }
   })
