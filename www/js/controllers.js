@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $state) {
   
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -33,11 +33,19 @@ angular.module('starter.controllers', [])
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
 
+    //would be good to show user input error around email.
+
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+    Parse.User.logIn($scope.loginData.email, $scope.loginData.password, {
+      success: function(user) {
+        $scope.modal.hide();
+        $state.go('app.location');
+      },
+      error: function(user, error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
   };
 })
 
@@ -60,6 +68,7 @@ angular.module('starter.controllers', [])
       $scope.create=function(){
           console.log($scope.user);
           User.create($scope.user)
+
       };
 
       //from parse https://www.parse.com/docs/js/guide#users-properties

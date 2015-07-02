@@ -20,7 +20,7 @@ angular.module('starter.services',[]).factory('User',['$http','PARSE_CREDENTIALS
           //from parse docs: 
           //https://www.parse.com/docs/js/guide#users-signing-up
           var user = new Parse.User();
-          user.set('username', data.firstName + ' ' + data.lastName);
+          user.set('username', data.email);
           user.set('firstName', data.firstName);
           user.set('lastName', data.lastName);
           user.set('password', data.password);
