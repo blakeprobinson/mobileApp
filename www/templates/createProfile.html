@@ -1,36 +1,38 @@
-<ion-header-bar class="bar-positive">
-    <div class="buttons">
-        <!-- <button class="button" ui-sref="todos">Back</button> -->
-        <h1 class="title">Create your profile</h1>
-    </div>
-</ion-header-bar>
+<ion-view view-title="Create Your Profile">
+	<ion-header-bar class="bar-positive">
+	    <div class="buttons">
+	        <!-- <button class="button" ui-sref="todos">Back</button> -->
+	        <h1 class="title">Create your profile</h1>
+	    </div>
+	</ion-header-bar>
 
-<ion-content>
-    <div>
-        <ion-list>
-            <label class="item item-input">
-              <span class="input-label">First name</span>
-              <input type="text" ng-model="user.firstName">
-            </label>
-            <label class="item item-input">
-              <span class="input-label">Last name</span>
-              <input type="text" ng-model="user.lastName">
-            </label>
-            <label class="item item-input">
-              <span class="input-label">Email</span>
-              <input type="email" ng-model="user.email">
-            </label>
-            <label class="item item-input">
-              <span class="input-label">Password</span>
-              <input type="password" ng-model="user.password">
-            </label> 
-            <label class="item item-input">
-              <span class="input-label">Hometown</span>
-              <input type="email" ng-model="user.homeTown">
-            </label>
-            <ion-button class="button button-block button-positive" ng-click="create()">
-                Create profile
-            </ion-button>
-        </ion-list>
-    </div>
-</ion-content>
+	<ion-content>
+	    <div>
+	        <ion-list>
+	            <label class="item item-input">
+	              <span class="input-label">First name</span>
+	              <input type="text" ng-model="user.firstName">
+	            </label>
+	            <label class="item item-input">
+	              <span class="input-label">Last name</span>
+	              <input type="text" ng-model="user.lastName">
+	            </label>
+	            <label class="item item-input">
+	              <span class="input-label">Email</span>
+	              <input type="email" ng-model="user.email">
+	            </label>
+	            <label class="item item-input">
+	              <span class="input-label">Password</span>
+	              <input type="password" ng-model="user.password">
+	            </label> 
+	            <label class="item item-input">
+	              <span class="input-label">Hometown</span>
+	              <input type="text" ng-model="user.homeTown">
+	            </label>
+	            <ion-button class="button button-block button-positive" ng-click="create()">
+	                Create profile
+	            </ion-button>
+	        </ion-list>
+	    </div>
+	</ion-content>
+</ion-view>
