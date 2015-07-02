@@ -19,24 +19,24 @@ angular.module('starter.services',[]).factory('User',['$http','PARSE_CREDENTIALS
       create:function(data){
           //from parse docs: 
           //https://www.parse.com/docs/js/guide#users-signing-up
-          var user = new Parse.User();
-          user.set('username', data.email);
-          user.set('firstName', data.firstName);
-          user.set('lastName', data.lastName);
-          user.set('password', data.password);
-          user.set('email', data.email);
+          // var user = new Parse.User();
+          // user.set('username', data.email);
+          // user.set('firstName', data.firstName);
+          // user.set('lastName', data.lastName);
+          // user.set('password', data.password);
+          // user.set('email', data.email);
 
 
-          return user.signUp(null, {
-            success: function(user) {
-              // Hooray! Let them use the app now.
-              $state.go('app.location');
-            },
-            error: function(user, error) {
-              // Show the error message somewhere and let the user try again.
-              alert("Error: " + error.code + " " + error.message);
-            }
-          });
+          // user.signUp(null, {
+          //   success: function(user) {
+          //     // Hooray! Let them use the app now.
+          //     $state.go('app.location');
+          //   },
+          //   error: function(user, error) {
+          //     // Show the error message somewhere and let the user try again.
+          //     alert("Error: " + error.code + " " + error.message);
+          //   }
+          // });
 
 
           // return $http.post('https://api.parse.com/1/users',data,{
