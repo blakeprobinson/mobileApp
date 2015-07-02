@@ -8,6 +8,11 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
+  //to update scope with user info
+  $scope.$on('$ionicView.enter', function() {
+    $scope.currentUser = Parse.User.current();
+  });
   
   // Form data for the login modal
   $scope.loginData = {};
@@ -85,6 +90,13 @@ angular.module('starter.controllers', [])
 // working with these two scopes and "curent user"
 
 .controller('ProfileCtrl', ['User', '$scope', '$state', function (User, $scope, $state) {
+      //to update scope with user info
+      $scope.$on('$ionicView.enter', function() {
+        $scope.currentUser = Parse.User.current();
+        console.log($scope.currentUser);
+      });
+
+
       $scope.user={};
 
       $scope.create=function(){
@@ -95,6 +107,7 @@ angular.module('starter.controllers', [])
           user.set('lastName', $scope.user.lastName);
           user.set('password', $scope.user.password);
           user.set('email', $scope.user.email);
+          user.set('homeTown', $scope.user.homeTown);
 
 
           user.signUp(null, {
@@ -110,6 +123,29 @@ angular.module('starter.controllers', [])
           });
           console.log($scope.user);
 
+      };
+
+      $scope.edit = function () {
+        var user = Parse.User.current()
+        user.set('firstName', $scope.user.firstName);
+        user.set('lastName', $scope.user.lastName);
+        user.set('homeTown', $scope.user.homeTown);
+
+        user.save({
+          firstName: $scope.user.firstName,
+          lastName: $scope.user.lastName,
+          homeTown: $scope.user.homeTown
+        }, {
+            success: function(user) {
+              // Hooray! Let them use the app now.
+              $state.go('app.location');
+              $scope.currentUser = Parse.User.current();
+            },
+            error: function(user, error) {
+              // Show the error message somewhere and let the user try again.
+              alert("Error: " + error.code + " " + error.message);
+            }
+          })
       };
 
       //from parse https://www.parse.com/docs/js/guide#users-properties

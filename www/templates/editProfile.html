@@ -1,5 +1,32 @@
 <ion-view view-title="Edit Your Profile">
   <ion-content>
     <h1>Edit Your Profile</h1>
-  </ion-content>
+    <div>
+        <ion-list>
+            <label class="item item-input">
+              <span class="input-label">First name</span>
+              <input type="text" value={{currentUser.attributes.firstName}} ng-model="user.firstName">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Last name</span>
+              <input type="text" value={{currentUser.attributes.lastName}} ng-model="user.lastName">
+            </label>
+            <!-- <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="email" value={{currentUser.attributes.email}}>
+            </label> -->
+            <!-- <label class="item item-input">
+              <span class="input-label">Password</span>
+              <input type="password" value={{currentUser.password}}>
+            </label>  -->
+            <label class="item item-input">
+              <span class="input-label">Hometown</span>
+              <input type="text" value={{currentUser.attributes.homeTown}} ng-model="user.hometown">
+            </label>
+            <ion-button class="button button-block button-positive" ng-click="edit()">
+                Edit profile
+            </ion-button>
+        </ion-list>
+    </div>
+</ion-content>
 </ion-view>
