@@ -1,4 +1,4 @@
-angular.module('mobileApp.services',[]).factory('Profile',['$http',function($http){
+angular.module('starter.services',[]).factory('User',['$http','PARSE_CREDENTIALS',function ($http,PARSE_CREDENTIALS){
   return {
       getAll:function(){
           return $http.get('https://api.parse.com/1/classes/User',{
@@ -17,7 +17,7 @@ angular.module('mobileApp.services',[]).factory('Profile',['$http',function($htt
           });
       },
       create:function(data){
-          return $http.post('https://api.parse.com/1/classes/User',data,{
+          return $http.post('https://api.parse.com/1/users',data,{
               headers:{
                   'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
                   'X-Parse-REST-API-Key':PARSE_CREDENTIALS.REST_API_KEY,
@@ -26,7 +26,7 @@ angular.module('mobileApp.services',[]).factory('Profile',['$http',function($htt
           });
       },
       edit:function(id,data){
-          return $http.put('https://api.parse.com/1/classes/User/'+id,data,{
+          return $http.put('https://api.parse.com/1/classes/users/'+id,data,{
               headers:{
                   'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
                   'X-Parse-REST-API-Key':PARSE_CREDENTIALS.REST_API_KEY,
@@ -35,7 +35,7 @@ angular.module('mobileApp.services',[]).factory('Profile',['$http',function($htt
           });
       },
       delete:function(id){
-          return $http.delete('https://api.parse.com/1/classes/User/'+id,{
+          return $http.delete('https://api.parse.com/1/users/'+id,{
               headers:{
                   'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
                   'X-Parse-REST-API-Key':PARSE_CREDENTIALS.REST_API_KEY,
@@ -43,8 +43,8 @@ angular.module('mobileApp.services',[]).factory('Profile',['$http',function($htt
               }
           });
       }
-   }
-}]);
+   };
+}])
 
 .value('PARSE_CREDENTIALS',{
     APP_ID: 'NYstRGxt89XOpI05J2YzdlgH0HCbzwSsKtzs2x1Y',
