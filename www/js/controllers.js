@@ -31,22 +31,34 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+    //console.log('Doing login', $scope.loginData);
 
     //would be good to show user input error around email.
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
     Parse.User.logIn($scope.loginData.email, $scope.loginData.password, {
       success: function(user) {
         $scope.modal.hide();
         $state.go('app.location');
+
+        //From parse docs
+        $scope.currentUser = Parse.User.current();
+
       },
       error: function(user, error) {
         alert("Error: " + error.code + " " + error.message);
       }
     });
   };
+
+  //Perform logout action
+  $scope.logout = function() {
+    //From parse docs
+    Parse.User.logOut();
+    $scope.currentUser = Parse.User.current();
+    //console.log($scope.currentUser);
+
+  };
+
 })
 
 
