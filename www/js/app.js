@@ -10,7 +10,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-
     //added Parse.initialize after getting error
     Parse.initialize('NYstRGxt89XOpI05J2YzdlgH0HCbzwSsKtzs2x1Y', 'uEk9olZ83k8pGyF5hujgsg0aYhyiHffBofzXO3Bh');
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -23,6 +22,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
+.run(function($state, User) {
+  var currentUser = User.userInfo();
+  if (currentUser) {
+      $state.go('app.map');
+  } else {
+      $state.go('app.createProfile')
+  }
+
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -33,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     controller: 'AppCtrl'
   })
 
-  .state('app.location', {
+  .state('app.map', {
     url: "/map",
     views: {
       'menuContent': {
@@ -52,15 +61,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/playlists.html"
-          // controller: 'PlaylistsCtrl'
-        }
-      }
-    })
 
   .state('app.createProfile', {
     url: "/createProfile",
@@ -81,6 +81,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   });
+
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
 });
