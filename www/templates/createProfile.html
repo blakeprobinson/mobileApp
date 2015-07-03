@@ -29,9 +29,14 @@
 	              <span class="input-label">Hometown</span>
 	              <input type="text" ng-model="user.homeTown">
 	            </label>
-	            <ion-button class="button button-block button-positive" ng-click="create()">
-	                Create profile
-	            </ion-button>
+	            <div class='button-bar'>
+		            <a class="button button-positive" ng-click="create()">
+		                Create profile
+		            </a>
+		            <a class="button button-calm" ng-click='login()'>
+		                Already registered? Login.
+		            </a>
+		        </div>    
 	        </ion-list>
 	    </div>
 	</ion-content>

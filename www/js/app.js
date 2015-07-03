@@ -22,15 +22,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
-.run(function($state, User) {
-  var currentUser = User.userInfo();
-  if (currentUser) {
-      $state.go('app.map');
-  } else {
-      $state.go('app.createProfile')
-  }
+// .run(function($state, User) {
+//   var currentUser = User.userInfo();
+//   if (currentUser) {
+//       $state.go('app.map');
+//   } else {
+//       $state.go('app.createProfile')
+//   }
 
-})
+// })
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -39,7 +39,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: "/app",
     abstract: true,
     templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
+    controller: 'UserCtrl'
   })
 
   .state('app.map', {
@@ -67,7 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'menuContent': {
         templateUrl: "templates/createProfile.html",
-        controller: 'ProfileCtrl'
+        controller: 'UserCtrl'
       }
     }
   })
@@ -77,14 +77,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'menuContent': {
         templateUrl: "templates/editProfile.html",
-        controller: 'ProfileCtrl'
+        controller: 'UserCtrl'
       }
     }
   });
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/map');
+  $urlRouterProvider.otherwise('/app/createProfile');
 });
 
 // Add the 'ionic.service.core' module to your main angular module:
