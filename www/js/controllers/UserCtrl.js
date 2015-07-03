@@ -1,11 +1,7 @@
-angular.module('starter.controllers')
-	.controller('UserCtrl', ['User', '$scope', '$state', '$ionicModal', function (User, $scope, $state, $ionicModal) {
+angular.module('starter.controllers', [])
+	.controller('UserCtrl', ['User', '$scope', '$state', '$ionicModal', function (User, $scope, $state, $ionicModal, currentUser) {   
+
 	//to update scope with user info
-      
-      $scope.$on('$ionicView.enter', function() {
-        $scope.currentUser = Parse.User.current();
-        console.log('ionicview at start of app ctrl called');
-      });
       
       // Form data for the login modal
       $scope.loginData = {};
@@ -59,21 +55,17 @@ angular.module('starter.controllers')
 
       //Perform logout action
       $scope.logout = function() {
-        //From parse docs
-        Parse.User.logOut();
-        $scope.currentUser = Parse.User.current();
-        //console.log($scope.currentUser);
-
+      	Parse.User.logOut();
+      	console.log(Parse.User.current())
+      	$scope.user = '';
       };
 
 
 
-
-
-      $scope.$on('$ionicView.enter', function() {
-        $scope.currentUser = Parse.User.current();
-        console.log($scope.currentUser);
-      });
+      // $scope.$on('$ionicView.enter', function() {
+      //   $scope.currentUser = Parse.User.current();
+      //   console.log($scope.currentUser);
+      // });
 
 
       $scope.user={};
@@ -92,7 +84,7 @@ angular.module('starter.controllers')
           user.signUp(null, {
             success: function(user) {
               // Hooray! Let them use the app now.
-              $state.go('app.location');
+              $state.go('app.map');
               $scope.currentUser = Parse.User.current();
             },
             error: function(user, error) {
@@ -117,7 +109,7 @@ angular.module('starter.controllers')
         }, {
             success: function(user) {
               // Hooray! Let them use the app now.
-              $state.go('app.location');
+              $state.go('app.map');
               $scope.currentUser = Parse.User.current();
             },
             error: function(user, error) {
